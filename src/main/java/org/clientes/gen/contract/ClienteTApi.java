@@ -13,7 +13,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 @Path("/ClienteT")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-05-03T14:58:15.923520900-05:00[America/Bogota]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-05-03T15:10:47.693004900-05:00[America/Bogota]")
 public interface ClienteTApi {
 
     @GET
