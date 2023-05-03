@@ -19,9 +19,6 @@ public class ClienteService implements IClienteService {
     @Inject
     IClienteDAO clienteDAO;
 
-    @Inject
-    ClienteMapper clienteMapper;
-
     @Transactional
     @Override
     public ClienteT createCliente(ClienteT cliente) {
@@ -32,7 +29,8 @@ public class ClienteService implements IClienteService {
 
         clienteDAO.persist(clienteEntity);
 
-        return clienteMapper.toclienteT(clienteEntity);
+        ClienteMapper mapper = new ClienteMapper();
+        return mapper.toclienteT(clienteEntity);
     }
 
     @Override
@@ -46,12 +44,14 @@ public class ClienteService implements IClienteService {
         List<ClienteT> clienteListType = new ArrayList<>();
 
         for (ClienteEntity clientesEntity : clientesList) {
+            ClienteMapper clienteMapper = new ClienteMapper();
             ClienteT clienteT = clienteMapper.toclienteT(clientesEntity);
             clienteListType.add(clienteT);
         }
         return clienteListType;
     }
 
+    @Transactional
     @Override
     public ClienteT updateCliente(Long id, ClienteT cliente) {
         // TODO Auto-generated method stub
