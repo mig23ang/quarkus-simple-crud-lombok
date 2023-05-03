@@ -6,38 +6,38 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.products.gen.contract.IClienteDigitalService;
-import org.products.gen.type.Producto;
+import org.products.gen.contract.ClientesApi;
+import org.products.gen.type.ClienteBaseType;
 import org.products.services.impl.ClienteDigitalService;
 
-public class ClienteController implements IClienteDigitalService {
+public class ClienteController implements ClientesApi {
 
     @Inject
-    ClienteDigitalService productsService;
+    ClienteDigitalService clienteService;
 
     @Override
-    public List<Producto> productosGet() {
-        return productsService.getAllProductos();
+    public void clientesEditarIdPut(Long id, @Valid @NotNull ClienteBaseType clienteBaseType) {
+        clienteService.updateClienteBaseEntity(id, null);
     }
 
     @Override
-    public void productosIdDelete(Long id) {
-        productsService.deleteProducto(id);
+    public void clientesEliminarIdDelete(Long id) {
+        clienteService.deleteClienteBaseEntity(id);
     }
 
     @Override
-    public Producto productosIdGet(Long id) {
-        return null;
+    public List<ClienteBaseType> clientesGet() {
+        return clienteService.getAllClienteBaseEntitys();
     }
 
     @Override
-    public Producto productosIdPut(Long id, @Valid @NotNull Producto producto) {
-        return productsService.updateProducto(id, producto);
+    public void clientesIdGet(Long id) {
+
     }
 
     @Override
-    public Producto productosPost(@Valid @NotNull Producto producto) {
-        return productsService.createProducto(producto);
+    public ClienteBaseType clientesPost(@Valid @NotNull ClienteBaseType clienteBaseType) {
+        return clienteService.createClienteBaseEntity(null);
     }
 
 }

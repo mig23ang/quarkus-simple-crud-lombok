@@ -15,7 +15,7 @@ paths:
               schema:
                 type: "array"
                 items:
-                  $ref: "#/components/schemas/Cliente"
+                  $ref: "#/components/schemas/ClienteBaseType"
     post:
       summary: "Crear un nuevo cliente"
       requestBody:
@@ -23,14 +23,14 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Cliente"
+              $ref: "#/components/schemas/ClienteBaseType"
       responses:
         "201":
           description: "Created"
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Cliente"
+                $ref: "#/components/schemas/ClienteBaseType"
   /clientes/{id}:
     get:
       summary: Obtener un cliente por su ID
@@ -63,7 +63,7 @@ paths:
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Cliente"
+              $ref: "#/components/schemas/ClienteBaseType"
       responses:
         "200":
           description: Cliente actualizado exitosamente

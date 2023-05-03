@@ -1,6 +1,5 @@
 package org.products.services.impl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.enterprise.context.ApplicationScoped;
@@ -9,67 +8,76 @@ import javax.transaction.Transactional;
 import javax.ws.rs.NotFoundException;
 
 import org.products.dao.contract.IClienteDAO;
-import org.products.dao.entity.ProductsEntity;
-import org.products.gen.type.Producto;
-import org.products.services.contract.IClienteService;
+import org.products.dao.entity.ClienteBaseEntity;
+import org.products.gen.type.ClienteBaseType;
+import org.products.services.contract.IClienteDigitalService;
 import org.products.utils.ClienteMapper;
 
 @ApplicationScoped
-public class ClienteDigitalService implements IClienteService {
+public class ClienteDigitalService implements IClienteDigitalService {
 
     @Inject
-    IClienteDAO productDAO;
+    IClienteDAO clienteDAO;
 
+    @Inject
+    ClienteMapper clienteMapper;
+
+    @Override
     @Transactional
+    public ClienteBaseType createClienteBaseEntity(ClienteBaseEntity clienteBaseEntity) {
+        ClienteBaseEntity clienteEntity = new ClienteBaseEntity();
+        clienteEntity.setNumeroCliente(clienteBaseEntity.getNumeroCliente());
+        clienteEntity.setTipoPersona(clienteBaseEntity.getTipoPersona());
+        clienteEntity.setTipoDocumento(clienteBaseEntity.getTipoDocumento());
+        clienteEntity.setNumeroDocumento(clienteBaseEntity.getNumeroDocumento());
+        clienteEntity.setFechaExpedicionDocumento(clienteBaseEntity.getFechaExpedicionDocumento());
+        clienteEntity.setPrimerNombre(clienteBaseEntity.getPrimerNombre());
+        clienteEntity.setNumeroCelular(clienteBaseEntity.getNumeroCelular());
+        clienteEntity.setSegundoNombre(clienteBaseEntity.getSegundoNombre());
+        clienteEntity.setPrimerApellido(clienteBaseEntity.getPrimerApellido());
+        clienteEntity.setSegundoApellido(clienteBaseEntity.getSegundoApellido());
+        clienteEntity.setCorreoElectronico(clienteBaseEntity.getCorreoElectronico());
+        clienteDAO.persist(clienteEntity);
+
+        return clienteMapper.toClienteBaseType(clienteEntity);
+    }
+
     @Override
-    public Producto createProducto(Producto producto) {
-        ProductsEntity productEntity = new ProductsEntity();
-        productEntity.nombre = producto.getNombre();
-        productEntity.descripcion = producto.getDescripcion();
-        productEntity.precio = producto.getPrecio();
-        productDAO.persist(productEntity);
+    public List<ClienteBaseType> getAllClienteBaseEntitys() {
+        List<ClienteBaseEntity> clientes = clienteDAO.listAll();
+        return clienteMapper.toClienteBaseTypeList(clientes);
+    }
+
+    @Override
+    @Transactional
+    public ClienteBaseType updateClienteBaseEntity(Long id, ClienteBaseEntity clienteBaseEntity) {
+        ClienteBaseEntity clienteEntity = clienteDAO.findById(id);
+        if (clienteEntity == null) {
+            throw new NotFoundException("Cliente with id " + id + " not found");
+        }
+        clienteEntity.setNumeroCliente(clienteBaseEntity.getNumeroCliente());
+        clienteEntity.setTipoPersona(clienteBaseEntity.getTipoPersona());
+        clienteEntity.setTipoDocumento(clienteBaseEntity.getTipoDocumento());
+        clienteEntity.setNumeroDocumento(clienteBaseEntity.getNumeroDocumento());
+        clienteEntity.setFechaExpedicionDocumento(clienteBaseEntity.getFechaExpedicionDocumento());
+        clienteEntity.setPrimerNombre(clienteBaseEntity.getPrimerNombre());
+        clienteEntity.setNumeroCelular(clienteBaseEntity.getNumeroCelular());
+        clienteEntity.setSegundoNombre(clienteBaseEntity.getSegundoNombre());
+        clienteEntity.setPrimerApellido(clienteBaseEntity.getPrimerApellido());
+        clienteEntity.setSegundoApellido(clienteBaseEntity.getSegundoApellido());
+        clienteEntity.setCorreoElectronico(clienteBaseEntity.getCorreoElectronico());
 
         ClienteMapper mapper = new ClienteMapper();
-        return mapper.toProducto(productEntity);
+        return mapper.toClienteBaseType(clienteEntity);
     }
 
     @Override
-    public List<Producto> getAllProductos() {
-        List<ProductsEntity> productList = productDAO.listAll();
-        List<Producto> productModelList = new ArrayList<>();
-
-        for (ProductsEntity productEntity : productList) {
-            ClienteMapper mapper = new ClienteMapper();
-            Producto producto = mapper.toProducto(productEntity);
-            productModelList.add(producto);
+    @Transactional
+    public void deleteClienteBaseEntity(Long id) {
+        ClienteBaseEntity clienteEntity = clienteDAO.findById(id);
+        if (clienteEntity == null) {
+            throw new NotFoundException("Cliente with id " + id + " not found");
         }
-
-        return productModelList;
-    }
-
-    @Override
-    public void deleteProducto(Long id) {
-        ProductsEntity productEntity = productDAO.findById(id);
-        if (productEntity == null) {
-            throw new NotFoundException("Product not found");
-        }
-
-        productDAO.deleteById(id);
-    }
-
-    @Override
-    public Producto updateProducto(Long id, Producto producto) {
-        ProductsEntity productEntity = productDAO.findById(id);
-        if (productEntity == null) {
-            throw new NotFoundException("Product not found");
-        }
-
-        productEntity.nombre = producto.getNombre();
-        productEntity.descripcion = producto.getDescripcion();
-        productEntity.precio = producto.getPrecio();
-        productDAO.persist(productEntity);
-
-        ClienteMapper mapper = new ClienteMapper();
-        return mapper.toProducto(productEntity);
+        clienteDAO.delete(clienteEntity);
     }
 }

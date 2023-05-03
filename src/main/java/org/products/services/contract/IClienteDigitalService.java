@@ -2,15 +2,16 @@ package org.products.services.contract;
 
 import java.util.List;
 
-import org.products.gen.type.Producto;
+import org.products.dao.entity.ClienteBaseEntity;
+import org.products.gen.type.ClienteBaseType;
 
 public interface IClienteDigitalService {
 
-    Producto createProducto(Producto producto);
+    ClienteBaseType createClienteBaseEntity(ClienteBaseEntity clienteBaseEntity);
 
-    List<Producto> getAllProductos();
+    List<ClienteBaseType> getAllClienteBaseEntitys();
 
-    Producto updateProducto(Long id, Producto producto);
+    ClienteBaseType updateClienteBaseEntity(Long id, ClienteBaseEntity clienteBaseEntity);
 
-    void deleteProducto(Long id);
+    void deleteClienteBaseEntity(Long id);
 }
