@@ -1,4 +1,4 @@
-package org.products.dao.entity;
+package org.clientes.dao.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -9,16 +9,16 @@ import javax.persistence.Table;
 import io.quarkus.hibernate.orm.panache.PanacheEntityBase;
 
 @Entity
-@Table(name = "products")
-public class ProductsEntity extends PanacheEntityBase {
+@Table(name = "clientes")
+public class ClienteEntity extends PanacheEntityBase {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    public String nombre;
+    public String primerNombre;
 
-    public String descripcion;
+    public String primerApellido;
 
-    public Integer precio;
+    public String correoElectronico;
 }

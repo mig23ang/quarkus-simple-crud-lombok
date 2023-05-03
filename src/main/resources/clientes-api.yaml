@@ -1,7 +1,7 @@
 openapi: 3.0.1
 info:
   title: Ejemplo de API con OpenAPI y Quarkus
-  description: API para productos
+  description: API para ClienteT
   version: 1.0.0
 
 servers:
@@ -10,27 +10,26 @@ servers:
 
 components:
   schemas:
-    Producto:
+    ClienteT:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        nombre:
+        primerNombre:
           type: string
-        descripcion:
+        primerApellido:
           type: string
-        precio:
-          type: integer
-          format: int32
+        correoElectronico:
+          type: string
       required:
-        - nombre
-        - precio
+        - primerNombre
+        - correoElectronico
 
 paths:
-  /productos:
+  /ClienteT:
     get:
-      description: Retorna todos los productos
+      description: Retorna todos los ClienteT
       responses:
         "200":
           description: OK
@@ -39,30 +38,30 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "#/components/schemas/Producto"
+                  $ref: "#/components/schemas/ClienteT"
     post:
-      description: Crea un nuevo producto
+      description: Crea un nuevo ClienteT
       requestBody:
-        description: Producto a crear
+        description: ClienteT a crear
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Producto"
+              $ref: "#/components/schemas/ClienteT"
       responses:
         "201":
           description: Created
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Producto"
-  /productos/{id}:
+                $ref: "#/components/schemas/ClienteT"
+  /ClienteT/{id}:
     get:
-      description: Retorna un producto por ID
+      description: Retorna un ClienteT por ID
       parameters:
         - name: id
           in: path
-          description: ID del producto
+          description: ID del ClienteT
           required: true
           schema:
             type: integer
@@ -73,37 +72,37 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Producto"
+                $ref: "#/components/schemas/ClienteT"
     put:
-      description: Actualiza un producto existente
+      description: Actualiza un ClienteT existente
       parameters:
         - name: id
           in: path
-          description: ID del producto
+          description: ID del ClienteT
           required: true
           schema:
             type: integer
             format: int64
       requestBody:
-        description: Producto a actualizar
+        description: ClienteT a actualizar
         required: true
         content:
           application/json:
             schema:
-              $ref: "#/components/schemas/Producto"
+              $ref: "#/components/schemas/ClienteT"
       responses:
         "200":
           description: OK
           content:
             application/json:
               schema:
-                $ref: "#/components/schemas/Producto"
+                $ref: "#/components/schemas/ClienteT"
     delete:
-      description: Elimina un producto existente
+      description: Elimina un ClienteT existente
       parameters:
         - name: id
           in: path
-          description: ID del producto
+          description: ID del ClienteT
           required: true
           schema:
             type: integer

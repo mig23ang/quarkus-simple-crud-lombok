@@ -4,7 +4,7 @@
   xmlns="http://maven.apache.org/POM/4.0.0"
   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <modelVersion>4.0.0</modelVersion>
-  <groupId>org.products</groupId>
+  <groupId>org.clientes</groupId>
   <artifactId>prodducts-crud</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <properties>
@@ -173,14 +173,14 @@
               <skipOverwrite>false</skipOverwrite>
               <generateSupportingFiles>false</generateSupportingFiles>
               <generateModels>true</generateModels>
-              <inputSpec>src/main/resources/productoss.yaml</inputSpec>
-              <apiNameSuffix>Productoss</apiNameSuffix>
+              <inputSpec>src/main/resources/clientes-api.yaml</inputSpec>
+              <apiNameSuffix>Api</apiNameSuffix>
               <skipValidateSpec>true</skipValidateSpec>
               <configOptions>
                 <dateLibrary>java8</dateLibrary>
-                <modelPackage>org.products.gen.type</modelPackage>
-                <invokerPackage>org.products.gen</invokerPackage>
-                <apiPackage>org.products.gen.contract</apiPackage>
+                <modelPackage>org.clientes.gen.type</modelPackage>
+                <invokerPackage>org.clientes.gen</invokerPackage>
+                <apiPackage>org.clientes.gen.contract</apiPackage>
                 <sourceFolder>src/main/java</sourceFolder>
                 <supportingFilesToGenerate>ApiUtil.java</supportingFilesToGenerate>
                 <generateAdditionalProperties>true</generateAdditionalProperties>
