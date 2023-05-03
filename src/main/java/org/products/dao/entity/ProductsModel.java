@@ -1,4 +1,4 @@
-package org.products;
+package org.products.dao.entity;
 
 import lombok.Getter;
 import lombok.Setter;
