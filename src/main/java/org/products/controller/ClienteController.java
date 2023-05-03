@@ -10,7 +10,7 @@ import org.products.gen.contract.ProductosProductoss;
 import org.products.gen.type.Producto;
 import org.products.services.impl.ProductsService;
 
-public class ProductsController implements ProductosProductoss {
+public class ClienteController implements ProductosProductoss {
 
     @Inject
     ProductsService productsService;

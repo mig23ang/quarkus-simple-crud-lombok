@@ -12,7 +12,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 
 @JsonTypeName("Producto")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-05-02T19:26:44.012483500-05:00[America/Bogota]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-05-03T10:04:59.999514700-05:00[America/Bogota]")
 public class Producto   {
   private @Valid Long id;
   private @Valid String nombre;
