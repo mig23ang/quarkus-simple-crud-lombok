@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.products.gen.type.Producto;
 
-public interface IProductoService {
+public interface IClienteDigitalService {
 
     Producto createProducto(Producto producto);
 

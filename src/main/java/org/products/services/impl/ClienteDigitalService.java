@@ -8,17 +8,17 @@ import javax.inject.Inject;
 import javax.transaction.Transactional;
 import javax.ws.rs.NotFoundException;
 
-import org.products.dao.contract.IProductoDAO;
+import org.products.dao.contract.IClienteDAO;
 import org.products.dao.entity.ProductsEntity;
 import org.products.gen.type.Producto;
-import org.products.services.contract.IProductoService;
-import org.products.utils.mapperProducto;
+import org.products.services.contract.IClienteService;
+import org.products.utils.ClienteMapper;
 
 @ApplicationScoped
-public class ProductsService implements IProductoService {
+public class ClienteDigitalService implements IClienteService {
 
     @Inject
-    IProductoDAO productDAO;
+    IClienteDAO productDAO;
 
     @Transactional
     @Override
@@ -29,7 +29,7 @@ public class ProductsService implements IProductoService {
         productEntity.precio = producto.getPrecio();
         productDAO.persist(productEntity);
 
-        mapperProducto mapper = new mapperProducto();
+        ClienteMapper mapper = new ClienteMapper();
         return mapper.toProducto(productEntity);
     }
 
@@ -39,7 +39,7 @@ public class ProductsService implements IProductoService {
         List<Producto> productModelList = new ArrayList<>();
 
         for (ProductsEntity productEntity : productList) {
-            mapperProducto mapper = new mapperProducto();
+            ClienteMapper mapper = new ClienteMapper();
             Producto producto = mapper.toProducto(productEntity);
             productModelList.add(producto);
         }
@@ -69,7 +69,7 @@ public class ProductsService implements IProductoService {
         productEntity.precio = producto.getPrecio();
         productDAO.persist(productEntity);
 
-        mapperProducto mapper = new mapperProducto();
+        ClienteMapper mapper = new ClienteMapper();
         return mapper.toProducto(productEntity);
     }
 }

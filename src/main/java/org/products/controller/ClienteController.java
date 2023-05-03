@@ -6,14 +6,14 @@ import javax.inject.Inject;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
-import org.products.gen.contract.ProductosProductoss;
+import org.products.gen.contract.IClienteDigitalService;
 import org.products.gen.type.Producto;
-import org.products.services.impl.ProductsService;
+import org.products.services.impl.ClienteDigitalService;
 
-public class ClienteController implements ProductosProductoss {
+public class ClienteController implements IClienteDigitalService {
 
     @Inject
-    ProductsService productsService;
+    ClienteDigitalService productsService;
 
     @Override
     public List<Producto> productosGet() {

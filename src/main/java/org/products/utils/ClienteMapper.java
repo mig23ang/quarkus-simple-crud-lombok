@@ -3,7 +3,7 @@ package org.products.utils;
 import org.products.dao.entity.ProductsEntity;
 import org.products.gen.type.Producto;
 
-public class mapperProducto {
+public class ClienteMapper {
 
     public Producto toProducto(ProductsEntity productEntity) {
         Producto producto = new Producto();

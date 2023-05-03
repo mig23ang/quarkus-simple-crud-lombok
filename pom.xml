@@ -169,8 +169,8 @@
               <skipOverwrite>false</skipOverwrite>
               <generateSupportingFiles>false</generateSupportingFiles>
               <generateModels>true</generateModels>
-              <inputSpec>src/main/resources/productoss.yaml</inputSpec>
-              <apiNameSuffix>Productoss</apiNameSuffix>
+              <inputSpec>src/main/resources/cliente-digital-api.yaml</inputSpec>
+              <apiNameSuffix>Api</apiNameSuffix>
               <skipValidateSpec>true</skipValidateSpec>
               <configOptions>
                 <dateLibrary>java8</dateLibrary>
