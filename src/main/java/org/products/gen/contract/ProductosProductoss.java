@@ -6,6 +6,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 
+
 import java.io.InputStream;
 import java.util.Map;
 import java.util.List;
@@ -13,7 +14,7 @@ import javax.validation.constraints.*;
 import javax.validation.Valid;
 
 @Path("/productos")
-@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-05-02T19:26:44.012483500-05:00[America/Bogota]")
+@javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaJAXRSSpecServerCodegen", date = "2023-05-03T08:15:00.723108300-05:00[America/Bogota]")
 public interface ProductosProductoss {
 
     @GET

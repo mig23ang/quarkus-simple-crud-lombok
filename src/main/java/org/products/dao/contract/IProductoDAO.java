@@ -1,6 +1,6 @@
 package org.products.dao.contract;
 
-import javax.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.ApplicationScoped;
 
 import org.products.dao.entity.ProductsEntity;
 
